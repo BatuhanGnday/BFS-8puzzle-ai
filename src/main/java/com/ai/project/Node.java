@@ -8,16 +8,27 @@ import java.util.Objects;
 
 @Getter
 public class Node {
+
     private Node parent;
     private List<Node> children;
     private ChessBoard chessBoard;
 
+
+    /**
+     * Construct Node with params.
+     * @param parent        parent of current node
+     * @param chessBoard    data of node
+     */
     public Node(Node parent, ChessBoard chessBoard) {
         this.parent = parent;
         this.children = new ArrayList<>();
         this.chessBoard = chessBoard;
     }
 
+    /**
+     * Function creates children for current node with all
+     * possible directions.
+     */
     public void moveToAllDirections() {
         for (ChessBoardMoveDirection moveDirection : ChessBoardMoveDirection.ALL_POSSIBLE_DIRECTIONS) {
             if (!this.chessBoard.canMoveTo(moveDirection)) {
@@ -34,6 +45,7 @@ public class Node {
             this.children.add(node);
         }
     }
+
 
     @Override
     public boolean equals(Object o) {

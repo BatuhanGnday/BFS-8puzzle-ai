@@ -10,6 +10,7 @@ public class ChessBoard {
     /**
      * Creates a board with random elements in it.
      */
+    // TODO: Check for resolvable array
     public ChessBoard() {
         Integer[] nums = {0, 1, 2, 3, 4, 5, 6, 7, 8};
         ArrayList<Integer> list = new ArrayList<>(Arrays.asList(nums));
@@ -52,6 +53,11 @@ public class ChessBoard {
         return zero;
     }
 
+    /**
+     * Swaps the given indexes.
+     * @param firstIndex
+     * @param secondIndex
+     */
     private void swap(int firstIndex, int secondIndex) {
         int temp = this.board[secondIndex];
 
@@ -59,6 +65,10 @@ public class ChessBoard {
         this.board[firstIndex] = temp;
     }
 
+    /**
+     * Moves the tile to the given direction.
+     * @param moveDirection
+     */
     public void moveTo(ChessBoardMoveDirection moveDirection) {
         if(!canMoveTo(moveDirection)) {
             throw new RuntimeException("Can't move to " + moveDirection);
@@ -88,6 +98,11 @@ public class ChessBoard {
         }
     }
 
+    /**
+     * Checks if tile can move to given direction.
+     * @param moveDirection
+     * @return
+     */
     public boolean canMoveTo(ChessBoardMoveDirection moveDirection) {
         int zIndex = findZeroIndex();
 
@@ -109,7 +124,10 @@ public class ChessBoard {
         }
     }
 
-    // check if state is goal
+    /**
+     *
+     * @return
+     */
     public boolean isGoal() {
         int[] goalState = {0, 1, 2,
                 3, 4, 5,
@@ -117,7 +135,10 @@ public class ChessBoard {
         return Arrays.equals(this.board, goalState);
     }
 
-    // prints the current state
+    /**
+     * Prints the state
+     * @return
+     */
     @Override
     public String toString() {
         return "" + board[0] + " " + board[1] + " " + board[2] + "\n" +

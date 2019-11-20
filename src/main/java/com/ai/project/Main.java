@@ -9,8 +9,12 @@ public class Main {
 
         // Create root
         Node root = new Node(null, new ChessBoard(
-                new int[] {1, 2, 3, 4, 5, 0, 6, 7, 8}
+                new int[] {1, 8, 2,
+                           0, 4, 3,
+                           7, 6, 5}
         ));
+
+        //Node root = new Node(null, new ChessBoard());
         openList.add(root);
         boolean goalFound = false;
         int count = 0;
